@@ -89,6 +89,36 @@ def find_duplicates(df, threshold=0.9, leading_chars=1):
 
 def main():
     st.title("Excel Fuzzy Deduplication Tool")
+
+    with st.expander("ℹ️ Instructions"):
+        st.markdown("""
+        ### What This Tool Does
+        This tool helps you find and group similar records in your data, even when they're not exact matches. It:
+        1. Considers **all columns** in your data for comparison
+        2. Uses fuzzy matching to detect similar text (95% similarity threshold)
+        3. Groups similar records together
+        4. Provides an Excel file with all records labeled by group
+        
+        ### How It Works
+        1. The tool combines all columns for each record into a single text string
+        2. It compares every record with every other record using the Jaro-Winkler similarity algorithm
+        3. Records with 95% or higher similarity are grouped together
+        4. Results are provided in an Excel file with a 'Group_ID' column:
+           - Records marked as 'Unique' have no similar matches
+           - Records marked as 'Group_1', 'Group_2', etc. are similar to each other
+        
+        ### How to Use
+        1. Copy your data from Excel or any spreadsheet
+        2. Paste it into the text area below
+        3. Wait for processing to complete
+        4. Download the Excel file with the results
+        
+        ### Data Requirements
+        - Include headers in the first row
+        - Data can be tab-separated, comma-separated, or semicolon-separated
+        - All columns will be used in the similarity comparison
+        - Larger datasets will take longer to process
+        """)
     
     # File upload
     uploaded_file = st.file_uploader("Choose an Excel file", type=['xlsx', 'xls'])
