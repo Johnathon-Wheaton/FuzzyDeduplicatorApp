@@ -1,0 +1,6 @@
+streamlit>=1.31.0
+pandas>=2.2.0
+numpy>=1.26.0
+thefuzz>=0.20.0
+python-Levenshtein>=0.23.0  # Optional but speeds up thefuzz
+openpyxl>=3.1.2  # For Excel file handling
